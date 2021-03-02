@@ -6,7 +6,7 @@ devtools::install_git(url = "https://github.com/piotrgruszecki/fd.cleaning.git",
 library(fd.cleaning)
 
 #-- 1. read config file
-if (!exists("config")) config <- config::get(file = "config.yml", use_parent = TRUE)
+if (!exists("config")) config <- config::get(file = "../fd.cleaning/config.yml", use_parent = TRUE)
 
 #-- 2. read csv, store in amazon
 fd.cleaning::read_csv_store_aws()
