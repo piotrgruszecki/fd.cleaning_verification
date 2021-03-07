@@ -39,4 +39,9 @@ fd.cleaning::write_table_to_aws(dt = categories_dt,        table_name = config$t
 
 
 #-- 7. complete sequence, as a function
-decode_industries_full()
+lookup_dt <- decode_industries_full()
+lookup_dt[, .N, .(Label, Product.Title, Client, country_iso2c)][N > 1][order(-N)]
+Bebedeparis_n <- lookup_dt[Product.Title == "Bebedeparis" & Client == "BebeDeParis"][, n]
+dt[n %in% Bebedeparis_n, ]
+
+lookup_dt[Product.Title == "247staff" & Client == "247staff"]
